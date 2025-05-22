@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c14pa0hvddkx8"]
+[gd_scene load_steps=9 format=3 uid="uid://c14pa0hvddkx8"]
 
 [ext_resource type="PackedScene" uid="uid://bliek22pgs32g" path="res://Scenes/player.tscn" id="1_2cpxq"]
 [ext_resource type="Texture2D" uid="uid://cpqb7olbqf114" path="res://Assets/sprites/world_tileset.png" id="2_xl7fd"]
+[ext_resource type="PackedScene" uid="uid://dw5a3q67vlfi8" path="res://Scenes/platform.tscn" id="3_jkhyv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n80so"]
 texture = ExtResource("2_xl7fd")
@@ -405,6 +406,43 @@ texture = ExtResource("2_xl7fd")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n80so")
 
+[sub_resource type="Animation" id="Animation_mjrxi"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(724, 290), Vector2(774, 290)]
+}
+
+[sub_resource type="Animation" id="Animation_om5ik"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(724, 290)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtu86"]
+_data = {
+"RESET": SubResource("Animation_om5ik"),
+"move": SubResource("Animation_mjrxi")
+}
+
 [node name="Game" type="Node2D"]
 position = Vector2(0, -1)
 
@@ -416,9 +454,22 @@ rotation = -0.00507046
 position = Vector2(-0.0253103, 4.99994)
 scale = Vector2(0.977264, 1.11761)
 zoom = Vector2(4, 4)
+process_callback = 0
 position_smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_w7nti")
 format = 2
 layer_0/tile_data = PackedInt32Array(1310757, 0, 0, 1441824, 0, 0, 1507360, 0, 1, 1572896, 0, 1, 1638432, 0, 1, 1703968, 0, 1, 1769504, 0, 1, 1441825, 0, 0, 1507361, 0, 1, 1572897, 0, 1, 1638433, 0, 1, 1703969, 0, 1, 1769505, 0, 1, 1441826, 0, 0, 1507362, 0, 1, 1572898, 0, 1, 1638434, 0, 1, 1703970, 0, 1, 1769506, 0, 1, 1310755, 0, 0, 1310756, 0, 0, 1114152, 0, 0, 1048616, 0, 0, 983081, 0, 0, 983082, 0, 0, 983083, 0, 0, 1310767, 0, 0, 1310768, 0, 0, 1310769, 0, 0, 983089, 0, 0, 983090, 0, 0, 983091, 0, 0, 983092, 0, 0, 1638453, 0, 0, 1638454, 0, 0, 1638455, 0, 0, 1638456, 0, 0, 1638457, 0, 0, 1638458, 0, 0, 1376291, 0, 1, 1376292, 0, 1, 1376293, 0, 1, 1441829, 0, 1, 1507365, 0, 1, 1507364, 0, 1, 1441828, 0, 1, 1441827, 0, 1, 1507363, 0, 1, 1572899, 0, 1, 1572900, 0, 1, 1638436, 0, 1, 1638435, 0, 1, 1703971, 0, 1, 1703972, 0, 1, 1638437, 0, 1, 1572901, 0, 1, 1703973, 0, 1, 1769508, 0, 1, 1769507, 0, 1, 1769509, 0, 1, 1179688, 0, 1, 1179689, 0, 1, 1179690, 0, 1, 1179691, 0, 1, 1114155, 0, 1, 1048619, 0, 1, 1048618, 0, 1, 1048617, 0, 1, 1114153, 0, 1, 1114154, 0, 1, 1245226, 0, 1, 1245225, 0, 1, 1245224, 0, 1, 1245227, 0, 1, 1310760, 0, 1, 1376296, 0, 1, 1441832, 0, 1, 1507368, 0, 1, 1572904, 0, 1, 1441833, 0, 1, 1376297, 0, 1, 1310761, 0, 1, 1310762, 0, 1, 1376298, 0, 1, 1441834, 0, 1, 1310763, 0, 1, 1376299, 0, 1, 1441835, 0, 1, 1507371, 0, 1, 1507370, 0, 1, 1507369, 0, 1, 1572906, 0, 1, 1572905, 0, 1, 1572907, 0, 1, 1376303, 0, 1, 1376304, 0, 1, 1376305, 0, 1, 1441841, 0, 1, 1507377, 0, 1, 1507376, 0, 1, 1441840, 0, 1, 1441839, 0, 1, 1507375, 0, 1, 1572911, 0, 1, 1638447, 0, 1, 1703983, 0, 1, 1638448, 0, 1, 1572912, 0, 1, 1572913, 0, 1, 1638449, 0, 1, 1703984, 0, 1, 1703985, 0, 1, 1703989, 0, 1, 1703990, 0, 1, 1703991, 0, 1, 1703992, 0, 1, 1703993, 0, 1, 1703994, 0, 1, 1048625, 0, 1, 1048626, 0, 1, 1048627, 0, 1, 1048628, 0, 1, 1441823, 0, 0, 1441822, 0, 0, 1441821, 0, 0, 1441815, 0, 0, 1441814, 0, 0, 1441813, 0, 0, 1441812, 0, 0, 1441811, 0, 0, 1441810, 0, 0, 1441809, 0, 0, 1507345, 0, 1, 1572882, 0, 1, 1572883, 0, 1, 1638420, 0, 1, 1638421, 0, 1, 1703958, 0, 1, 1507346, 0, 1, 1507347, 0, 1, 1572881, 0, 1, 1638417, 0, 1, 1703953, 0, 1, 1638418, 0, 1, 1703954, 0, 1, 1638419, 0, 1, 1703955, 0, 1, 1507348, 0, 1, 1572884, 0, 1, 1703956, 0, 1, 1507349, 0, 1, 1572885, 0, 1, 1703957, 0, 1, 1507350, 0, 1, 1572886, 0, 1, 1638422, 0, 1, 1507351, 0, 1, 1572887, 0, 1, 1638423, 0, 1, 1703959, 0, 1, 1507357, 0, 1, 1572893, 0, 1, 1638429, 0, 1, 1703965, 0, 1, 1769501, 0, 1, 1507358, 0, 1, 1572894, 0, 1, 1638430, 0, 1, 1703966, 0, 1, 1769502, 0, 1, 1507359, 0, 1, 1572895, 0, 1, 1638431, 0, 1, 1703967, 0, 1, 1769503, 0, 1, 1441817, 655360, 0, 1441818, 655360, 0, 1441819, 655360, 0, 1441820, 720896, 0, 1441816, 589824, 0)
+
+[node name="Platform" parent="." instance=ExtResource("3_jkhyv")]
+position = Vector2(612, 288)
+
+[node name="Platform2" parent="." instance=ExtResource("3_jkhyv")]
+position = Vector2(724, 290)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+libraries = {
+"": SubResource("AnimationLibrary_mtu86")
+}
+autoplay = "move"
