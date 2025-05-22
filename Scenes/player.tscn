@@ -44,13 +44,14 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 position = Vector2(0, -12)
+collision_layer = 2
 script = ExtResource("1_m5smo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kbuy0")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.693129
+frame_progress = 0.461442
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
