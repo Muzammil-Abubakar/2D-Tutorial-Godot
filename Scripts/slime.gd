@@ -16,9 +16,7 @@ func _process(delta):
 	if right.is_colliding():
 		direction = -1
 		animated_sprite_2d.flip_h = true
-		print("right")
 	if left.is_colliding():
 		direction = 1
 		animated_sprite_2d.flip_h = false
-		print("right")
 	position.x += direction * SPEED * delta
